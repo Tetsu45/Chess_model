@@ -47,7 +47,7 @@ def extract_data_from_pgn(pgn_path, max_games=None):
 
 # Example usage
 if __name__ == "__main__":
-    pgn_path = "your_games.pgn"  # Replace with your actual PGN file path
+    pgn_path = "my_lichess_games.pgn"  # Replace with your actual PGN file path
     df = extract_data_from_pgn(pgn_path, max_games=500)  # Limit to 500 games (optional)
     df.to_csv("chess_training_data.csv", index=False)
     print("Extracted data saved to 'chess_training_data.csv'")
