@@ -81,9 +81,24 @@ loss, acc = model.evaluate(X_test, y_test)
 print(f"Test Accuracy: {acc:.2%}")
 
 # Predict on a sample
-sample_index = 0
-pred = model.predict(np.expand_dims(X_test[sample_index], axis=0))
-pred_move = le.inverse_transform([np.argmax(pred)])
-print("Predicted move:", pred_move[0])
+#sample_index = 0
+#pred = model.predict(np.expand_dims(X_test[sample_index], axis=0))
+#pred_move = le.inverse_transform([np.argmax(pred)])
+ 
+#print("Predicted move:", pred_move[0])
+# Number of moves to print
+num_samples = 5
 
+for sample_index in range(num_samples):
+    pred = model.predict(np.expand_dims(X_test[sample_index], axis=0))
+    pred_move = le.inverse_transform([np.argmax(pred)])
+
+    # Print the predicted move and the corresponding input (FEN, rating, move number)
+    print(f"Sample {sample_index + 1}:")
+    print(f"Predicted move: {pred_move[0]}")
+    print(f"FEN: {df.iloc[sample_index]['FEN']}")
+    print(f"Rating: {df.iloc[sample_index]['PlayerRating']}")
+    print(f"Move number: {df.iloc[sample_index]['MoveNumber']}")
+    print(f"Actual move: {df.iloc[sample_index]['SAN']}")
+    print("-" * 50)
 
